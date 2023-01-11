@@ -46,6 +46,7 @@ import com.android.settingslib.search.Indexable;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.stag.StagUtils;
 
 import com.stag.horns.preferences.CustomSeekBarPreference;
 import com.stag.horns.preferences.SystemSettingSwitchPreference;
@@ -59,16 +60,28 @@ import com.stag.horns.preferences.SystemSettingEditTextPreference;
 public class QuickSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
 
+    private static final String DUAL_TONE_QS_PANEL = "dual_tone_qs_panel";
+
+    private SystemSettingSwitchPreference mDualToneQsPanel;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.horns_quicksettings);
         ContentResolver resolver = getActivity().getContentResolver();
+
+        mDualToneQsPanel = (SystemSettingSwitchPreference) findPreference(DUAL_TONE_QS_PANEL);
+        mDualToneQsPanel.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mDualToneQsPanel) {
+            StagUtils.showSystemUiRestartDialog(getContext());
+            return true;
+        }
+
         return false;
     }
 

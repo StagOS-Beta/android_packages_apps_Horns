@@ -281,4 +281,8 @@
     <string name="network_traffic_autohide_threshold_title">Auto-hide threshold</string>
     <string name="network_traffic_refresh_interval_title">Refresh interval</string>
 
+    <!-- Dual Tone QS -->
+    <string name="dual_tone_qs_panel_title">Enable Dual Tone QS</string>
+    <string name="dual_tone_qs_panel_summary">Show dark qs panel on light theme</string>
+
 </resources>
