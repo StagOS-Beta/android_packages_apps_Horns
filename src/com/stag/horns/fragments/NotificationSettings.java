@@ -56,7 +56,7 @@ public class NotificationSettings extends SettingsPreferenceFragment
 
     private static final String ALERT_SLIDER_CAT = "alert_slider_cat";
     
-    private static final String KEY_BATTERY_CHARGING_LIGHT = "battery_charging_light";
+    private static final String KEY_BATTERY_CHARGING_LIGHT = "battery_light_options";
 
     private Preference mBatteryLightPref;
     private SystemSettingSwitchPreference mLowBatteryBlinking; 
